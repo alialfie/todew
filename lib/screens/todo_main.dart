@@ -5,6 +5,8 @@ import 'dart:async';
 
 import 'package:todew/todo_db.dart';
 
+import 'add_todo.dart';
+
 class TodoMain extends StatefulWidget {
   const TodoMain({Key? key}) : super(key: key);
 
@@ -28,13 +30,17 @@ class _TodoMainState extends State<TodoMain> {
                 ScaffoldMessenger.of(context)
                     .showSnackBar(SnackBar(content: Text(todos[1].title)));
               },
-              icon: Icon(Icons.done),
+              icon: Icon(Icons.history),
             ),
             IconButton(
               splashRadius: 20.0,
               onPressed: () {
-                dbHelper.insertTodo(
-                    Todo(id: 2, title: "asassd", description: "ss"));
+                // dbHelper.insertTodo(
+                //     Todo(id: 2, title: "asassd", description: "ss"));
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (context) => AddTodo()),
+                );
               },
               icon: Icon(Icons.add),
             ),
@@ -69,7 +75,7 @@ class _TodoMainState extends State<TodoMain> {
         padding: EdgeInsets.all(15.0),
         child: Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
-          crossAxisAlignment: CrossAxisAlignment.start,
+          crossAxisAlignment: CrossAxisAlignment.center,
           children: [
             Expanded(
               child: Column(
@@ -83,7 +89,7 @@ class _TodoMainState extends State<TodoMain> {
                   SizedBox(height: 10),
                   Text(
                     todo.description,
-                    maxLines: 2,
+                    maxLines: 3,
                     overflow: TextOverflow.ellipsis,
                   )
                 ],
