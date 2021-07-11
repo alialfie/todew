@@ -52,7 +52,7 @@ class _AddTodoState extends State<AddTodo> {
                   onPressed: () async {
                     String title = titleController.text;
                     String description = descriptionController.text;
-                    Todo todo = Todo(id: 12, title: title, description: description);
+                    Todo todo = Todo(id: 15, title: title, description: description);
                     await dbHelper.insertTodo(todo);
                     Navigator.pop(context);
                   },
